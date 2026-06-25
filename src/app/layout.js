@@ -1,5 +1,6 @@
 import { JetBrains_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import CursorEffect from "@/components/CursorEffect";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -22,7 +23,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${jetbrainsMono.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <CursorEffect />
+        {children}
+      </body>
     </html>
   );
 }

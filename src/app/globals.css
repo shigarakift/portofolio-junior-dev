@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0d1117; /* GitHub Dark Dimmed or similar */
+  --foreground: #ca8a04; /* Dark yellow/amber */
+  --terminal-yellow: #ca8a04;
+  --terminal-gray: #8b949e;
+  --terminal-bg: #0d1117;
+  --terminal-border: #30363d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-terminal-yellow: var(--terminal-yellow);
+  --color-terminal-gray: var(--terminal-gray);
+  --color-terminal-bg: var(--terminal-bg);
+  --color-terminal-border: var(--terminal-border);
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono); /* Default to mono for the terminal feel */
+}
+
+::selection {
+  background-color: var(--terminal-yellow);
+  color: var(--background);
+}
+
+/* Custom scrollbar for terminal vibe */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--terminal-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terminal-gray);
+}

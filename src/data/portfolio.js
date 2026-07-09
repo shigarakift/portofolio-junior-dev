@@ -3,11 +3,11 @@ import { Terminal, Server, Cpu } from "lucide-react";
 export const personalData = {
   name: "Bagas Alfattah R.",
   username: "shigarakift",
-  role: "Backend & Systems Engineer",
-  email: "bagas@example.com", // Replace with actual email if known
+  role: "Backend Developer",
+  email: "bagasfattah435@gmail.com", // Replace with actual email if known
   github: "https://github.com/shigarakift",
   linkedin: "https://linkedin.com/in/shigarakift", // Replace with actual linkedin if known
-  about: "I am a passionate software engineer with a strong focus on server infrastructure and backend development. I enjoy configuring Linux environments, building scalable APIs, and managing server deployment pipelines.",
+  about: "I enjoy configuring Linux environments, building scalable APIs, and managing server deployment pipelines.",
 };
 
 export const skills = [
@@ -29,17 +29,9 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "SysMon CLI",
-    description: "A lightweight terminal-based CLI tool to monitor system metrics (CPU, RAM, Disk) in real-time.",
-    tech: ["Go", "Bash", "Linux"],
-    github: "#",
-    demo: "#",
-  },
-  {
-    id: 2,
-    title: "Secure REST API",
-    description: "A robust backend API boilerplate featuring OAuth2 authentication, rate limiting, and PostgreSQL integration.",
-    tech: ["Node.js", "Express", "PostgreSQL"],
+    title: "Hotel Web",
+    description: "This is a full stack web that i made for school assignment, it is a web that can be used to order food and drinks.",
+    tech: ["Laravel","MySQL"],
     github: "#",
     demo: "#",
   },

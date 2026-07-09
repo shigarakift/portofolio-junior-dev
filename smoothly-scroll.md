@@ -1,0 +1,2 @@
+saya ingin agar jika ada user yang mengunjungi web portofolio saya
+saat klik misal button projects, dia akan scroll ke bawah dengan smooth, begitupun jika ia sedang scroll portofolio saya dari atas ke bawah.

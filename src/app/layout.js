@@ -1,6 +1,7 @@
 import { JetBrains_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import CursorEffect from "@/components/CursorEffect";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       className={`${jetbrainsMono.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <SmoothScroll />
         <CursorEffect />
         {children}
       </body>

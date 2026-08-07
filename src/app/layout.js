@@ -6,25 +6,40 @@ import SmoothScroll from "@/components/SmoothScroll";
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata = {
-  title: "shigarakift | Terminal Portfolio",
-  description: "Terminal-themed interactive portfolio",
+  title: "shigarakift — Linux Admin & Backend Developer",
+  description: "Official portfolio of Bagas Alfattah R. (shigarakift) - SIJA SMKN 1 Cibinong student specializing in Linux Administration, Backend APIs, and Docker infrastructure.",
+  keywords: ["shigarakift", "Bagas Alfattah R", "Linux Administration", "Backend Developer", "SMKN 1 Cibinong", "SIJA", "Docker", "Go", "Node.js"],
+  authors: [{ name: "Bagas Alfattah R.", url: "https://github.com/shigarakift" }],
+  openGraph: {
+    title: "shigarakift — Linux Admin & Backend Developer",
+    description: "Linux Server Administration, Backend Architecture, and Containerized Infrastructure.",
+    type: "website",
+    locale: "id_ID",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "shigarakift — Linux Admin & Backend Developer",
+    description: "SIJA student at SMKN 1 Cibinong specializing in Linux server administration, backend APIs, and Docker.",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
-      className={`${jetbrainsMono.variable} ${inter.variable} h-full antialiased`}
+      lang="id"
+      className={`${jetbrainsMono.variable} ${inter.variable} h-full bg-[#090d14] antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-[#090d14] text-[#f8fafc] overflow-x-hidden">
         <SmoothScroll />
         <CursorEffect />
         {children}

@@ -1,50 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d1117; /* GitHub Dark Dimmed or similar */
-  --foreground: #ca8a04; /* Dark yellow/amber */
-  --terminal-yellow: #ca8a04;
-  --terminal-gray: #8b949e;
-  --terminal-bg: #0d1117;
-  --terminal-border: #30363d;
+  --background: #090d14;
+  --bg-subtle: #0f172a;
+  --card-bg: #111726;
+  --card-hover: #162035;
+  --foreground: #f8fafc;
+  --terminal-amber: #f59e0b;
+  --terminal-amber-bright: #fbbf24;
+  --terminal-amber-dim: rgba(245, 158, 11, 0.15);
+  --terminal-amber-border: rgba(245, 158, 11, 0.3);
+  --terminal-gray: #94a3b8;
+  --terminal-muted: #64748b;
+  --terminal-border: #1e293b;
+  --terminal-border-light: #334155;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-terminal-yellow: var(--terminal-yellow);
+  --color-terminal-amber: var(--terminal-amber);
   --color-terminal-gray: var(--terminal-gray);
-  --color-terminal-bg: var(--terminal-bg);
   --color-terminal-border: var(--terminal-border);
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-body {
-  background: var(--background);
+html, body {
+  background-color: #090d14 !important;
   color: var(--foreground);
-  font-family: var(--font-mono); /* Default to mono for the terminal feel */
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* Subtle Grid Background Pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Subtle Glow Effects */
+.amber-glow-radial {
+  background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.12), transparent 70%);
+}
+
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 158, 11, 0.05),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.card-shine:hover::before {
+  left: 100%;
 }
 
 ::selection {
-  background-color: var(--terminal-yellow);
-  color: var(--background);
+  background-color: rgba(245, 158, 11, 0.25);
+  color: var(--terminal-amber-bright);
 }
 
-/* Custom scrollbar for terminal vibe */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: #090d14;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--terminal-border);
+  background: #1e293b;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--terminal-gray);
+  background: #334155;
 }

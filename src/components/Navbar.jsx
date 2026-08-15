@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, ArrowUpRight, Menu, X } from 'lucide-react';
+import { Terminal, ArrowUpRight, Menu, X, Sparkles } from 'lucide-react';
 import { personalData } from '@/data/portfolio';
 import WibClock from '@/components/WibClock';
 
@@ -28,73 +28,71 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled || mobileMenuOpen
-            ? 'bg-[#090d14]/90 backdrop-blur-xl border-b border-[#1e293b] py-3 shadow-2xl shadow-black/60'
-            : 'bg-transparent py-4 sm:py-5'
-        }`}
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-          {/* Brand & Status */}
-          <a href="#" className="flex items-center space-x-2.5 sm:space-x-3 group">
-            <div className="w-8 h-8 rounded-lg bg-[rgba(245,158,11,0.1)] border border-[rgba(245,158,11,0.25)] flex items-center justify-center text-[#f59e0b] group-hover:border-[#f59e0b] group-hover:bg-[rgba(245,158,11,0.2)] transition-all">
-              <Terminal size={17} />
+      <header className="fixed top-0 sm:top-4 inset-x-0 mx-auto max-w-5xl z-50 px-3 sm:px-6 transition-all duration-300">
+        <div
+          className={`w-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl ${
+            scrolled || mobileMenuOpen
+              ? 'bg-[#080c14]/85 backdrop-blur-xl border border-white/[0.1] shadow-2xl shadow-black/70'
+              : 'bg-[#0d131f]/60 backdrop-blur-md border border-white/[0.06] shadow-lg'
+          }`}
+        >
+          {/* Brand & Live Indicator */}
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="w-8 h-8 rounded-xl bg-[#0066FF]/10 border border-[#0066FF]/30 flex items-center justify-center text-[#0066FF] group-hover:bg-[#0066FF] group-hover:text-white transition-all duration-300 shadow-sm shadow-[#0066FF]/20">
+              <Terminal size={16} />
             </div>
             <div className="flex flex-col">
-              <span className="font-mono font-bold tracking-tight text-white text-xs sm:text-sm flex items-center gap-1">
-                shigarakift <span className="text-[#f59e0b] text-xs">/</span> sys
+              <span className="font-semibold text-xs sm:text-sm text-white tracking-tight flex items-center gap-1.5">
+                {personalData.username}
+                <span className="text-[10px] font-mono text-[#0066FF] px-1.5 py-0.2 bg-[#0066FF]/10 rounded border border-[#0066FF]/20">dev</span>
               </span>
-              <span className="text-[9px] sm:text-[10px] font-mono text-[#64748b] flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                {personalData.role}
+              <span className="text-[9px] sm:text-[10px] text-slate-400 flex items-center gap-1.5 font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Active node</span>
               </span>
             </div>
           </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-1 font-mono text-xs bg-[#111726]/80 p-1.5 rounded-xl border border-[#1e293b] backdrop-blur-md">
+          {/* Desktop Nav Links */}
+          <nav className="hidden md:flex items-center space-x-1 font-medium text-xs bg-[#080c14]/80 px-2 py-1 rounded-xl border border-white/[0.06]">
             {navLinks.map((link, idx) => (
               <a
                 key={idx}
                 href={link.href}
-                className="px-3 py-1.5 rounded-lg text-[#94a3b8] hover:text-white hover:bg-[#1e293b] transition-all flex items-center gap-1"
+                className="px-3.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
               >
-                <span className="text-[#f59e0b] opacity-60 text-[10px]">&gt;</span>
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* WIB Clock & Action Badge */}
+          {/* Right Action & Clock */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Sticky Live WIB Clock Badge at the Very Top */}
-            <div className="flex items-center px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-[#111726]/90 border border-[#1e293b] backdrop-blur-md text-[11px] sm:text-xs shadow-inner">
+            {/* Live WIB Clock Pill */}
+            <div className="flex items-center px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-[#080c14]/90 border border-white/[0.08] text-[11px] sm:text-xs font-mono text-slate-300">
               <WibClock />
             </div>
 
+            {/* CTA Button */}
             <a
               href="#contact"
-              className="hidden sm:flex items-center gap-2 text-xs font-mono px-3.5 py-1.5 rounded-lg border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.08)] text-[#fbbf24] hover:bg-[#f59e0b] hover:text-[#090d14] font-semibold transition-all shadow-sm"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-xl bg-[#0066FF] hover:bg-[#0052CC] text-white transition-all shadow-md shadow-[#0066FF]/25 font-sans"
             >
               <span>Get in Touch</span>
               <ArrowUpRight size={14} />
             </a>
 
-            {/* Mobile Hamburger Button */}
+            {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-[#111726] border border-[#1e293b] text-[#94a3b8] hover:text-white focus:outline-none"
+              className="md:hidden p-2 rounded-xl bg-[#080c14] border border-white/[0.08] text-slate-300 hover:text-white focus:outline-none"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X size={20} className="text-[#f59e0b]" /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={18} className="text-[#0066FF]" /> : <Menu size={18} />}
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
@@ -104,30 +102,27 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[60px] z-40 md:hidden bg-[#090d14]/95 border-b border-[#1e293b] backdrop-blur-xl px-6 py-6 shadow-2xl space-y-4 font-mono text-sm"
+            className="fixed inset-x-3 top-[68px] z-40 md:hidden bg-[#080c14]/95 border border-white/[0.1] rounded-2xl backdrop-blur-2xl p-5 shadow-2xl space-y-4"
           >
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-1">
               {navLinks.map((link, idx) => (
                 <a
                   key={idx}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-2.5 rounded-lg text-[#94a3b8] hover:text-white hover:bg-[#111726] transition-all flex items-center justify-between border border-transparent hover:border-[#1e293b]"
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-white/[0.05] transition-all flex items-center justify-between text-sm font-medium"
                 >
-                  <span className="flex items-center gap-2">
-                    <span className="text-[#f59e0b]">&gt;</span>
-                    {link.name}
-                  </span>
-                  <span className="text-[10px] text-[#64748b]">0{idx + 1}</span>
+                  <span>{link.name}</span>
+                  <span className="text-[10px] font-mono text-slate-500">0{idx + 1}</span>
                 </a>
               ))}
             </div>
 
-            <div className="pt-2 border-t border-[#1e293b]">
+            <div className="pt-2 border-t border-white/[0.08]">
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#f59e0b] text-[#090d14] font-bold transition-all shadow-lg shadow-[rgba(245,158,11,0.2)]"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0066FF] text-white font-medium text-sm transition-all shadow-lg shadow-[#0066FF]/25"
               >
                 <span>Get in Touch</span>
                 <ArrowUpRight size={16} />

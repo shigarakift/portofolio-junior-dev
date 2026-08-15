@@ -8,14 +8,12 @@ export default function CursorEffect() {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    // Check if it's a touch device to disable the effect
     if (window.matchMedia("(pointer: coarse)").matches) {
       setIsTouchDevice(true);
       return;
     }
 
     const handleMouseMove = (e) => {
-      // Use requestAnimationFrame for better performance
       requestAnimationFrame(() => {
         setCoords({ x: e.clientX, y: e.clientY });
         if (!isVisible) setIsVisible(true);
@@ -28,7 +26,7 @@ export default function CursorEffect() {
 
     const handleMouseEnter = () => {
       setIsVisible(true);
-    }
+    };
 
     window.addEventListener("mousemove", handleMouseMove);
     document.body.addEventListener("mouseleave", handleMouseLeave);
@@ -47,7 +45,7 @@ export default function CursorEffect() {
     <div
       className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
       style={{
-        background: `radial-gradient(600px at ${coords.x}px ${coords.y}px, rgba(202, 138, 4, 0.08), transparent 80%)`,
+        background: `radial-gradient(600px at ${coords.x}px ${coords.y}px, rgba(0, 102, 255, 0.07), transparent 80%)`,
       }}
     />
   );

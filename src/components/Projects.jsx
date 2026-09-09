@@ -1,102 +1,110 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { Sparkles, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { projects } from "@/data/portfolio";
 
 export default function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24 sm:scroll-mt-28">
+    <section id="projects" className="scroll-mt-24 py-10 sm:py-14 border-t border-white/[0.08]">
       {/* Section Header */}
-      <div className="flex items-center gap-3 mb-8 sm:mb-10">
-        <div className="p-2.5 rounded-xl bg-[#0066FF]/10 border border-[#0066FF]/20 text-[#0066FF]">
-          <Sparkles size={20} />
-        </div>
+      <div className="mb-10 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <span className="text-[11px] font-mono text-[#0066FF] uppercase tracking-wider font-semibold">
-            04. Portfolio Work
+          <span className="text-xs font-mono text-[#3b82f6] uppercase tracking-wider">
+            03 / Selected Work
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
             Featured Projects
           </h2>
         </div>
+        <p className="text-xs text-slate-400 font-sans max-w-sm">
+          A selection of production-grade backends, network tools, and fullstack platforms.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
+      {/* Modern Interactive Project Index Rows (Not Clunky Boxes) */}
+      <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
         {projects.map((project, idx) => (
-          <motion.div
+          <div
             key={project.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="p-6 rounded-2xl glass-tile shimmer-hover flex flex-col justify-between group min-w-0"
+            className="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 group hover:bg-white/[0.02] transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xl"
           >
-            <div>
-              <div className="flex justify-between items-start mb-4">
-                <span className="px-2.5 py-1 rounded-md bg-[#0066FF]/10 border border-[#0066FF]/25 text-[#0066FF] text-xs font-mono font-medium">
+            {/* Column 1: Index & Category */}
+            <div className="lg:col-span-3 space-y-2">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-mono text-slate-500">
+                  0{idx + 1}
+                </span>
+                <span className="text-[11px] font-sans px-2.5 py-0.5 rounded-full bg-white/[0.05] text-slate-300 border border-white/[0.06]">
                   {project.badge}
                 </span>
-                <div className="flex items-center space-x-3 text-slate-400">
-                  {project.github !== "#" && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-white transition-colors"
-                      title="Source Repository"
-                    >
-                      <FaGithub size={18} />
-                    </a>
-                  )}
-                  {project.demo !== "#" && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-[#0066FF] transition-colors"
-                      title="Live Demo"
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  )}
-                </div>
               </div>
 
-              <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#0066FF] transition-colors mb-1">
+              <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#3b82f6] transition-colors tracking-tight">
                 {project.title}
               </h3>
-              <div className="text-[11px] sm:text-xs font-mono text-slate-500 mb-4">
+
+              <div className="text-xs text-slate-400 font-sans">
                 {project.tagline}
               </div>
+            </div>
 
-              <p className="text-xs sm:text-sm text-slate-400 font-sans leading-relaxed mb-6">
+            {/* Column 2: Narrative & Highlights */}
+            <div className="lg:col-span-6 space-y-4">
+              <p className="text-sm text-slate-300 leading-relaxed font-sans">
                 {project.description}
               </p>
 
-              <div className="space-y-2 mb-6">
+              <div className="space-y-1.5 text-xs text-slate-400 font-sans">
                 {project.highlights.map((hl, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs font-mono text-slate-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0066FF] shrink-0"></span>
+                  <div key={i} className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-[#3b82f6]"></span>
                     <span>{hl}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/[0.06]">
-              {project.tech.map((t, i) => (
-                <span
-                  key={i}
-                  className="px-2.5 py-0.5 rounded text-[10px] sm:text-[11px] font-mono bg-[#080c14] text-slate-400 border border-white/[0.05]"
-                >
-                  {t}
-                </span>
-              ))}
+            {/* Column 3: Tech Pills & Links */}
+            <div className="lg:col-span-3 flex flex-col justify-between space-y-4">
+              <div className="flex flex-wrap gap-1.5">
+                {project.tech.map((t, i) => (
+                  <span
+                    key={i}
+                    className="px-2 py-0.5 text-xs text-slate-300 bg-white/[0.04] border border-white/[0.06] rounded"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-3 pt-2">
+                {project.github && project.github !== "#" && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+                  >
+                    <FaGithub size={15} />
+                    <span>Source Code</span>
+                  </a>
+                )}
+                {project.demo && project.demo !== "#" && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-[#3b82f6] hover:text-white flex items-center gap-1 transition-colors"
+                  >
+                    <span>Live Demo</span>
+                    <ArrowUpRight size={14} />
+                  </a>
+                )}
+              </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

@@ -3,7 +3,7 @@ import { Terminal, Server, Cpu, HardDrive, ShieldCheck, Database } from "lucide-
 export const personalData = {
   name: "Bagas Alfattah R.",
   username: "shigarakift",
-  title: "Linux Administration & Backend Specialist",
+  title: "Linux Administration & Backend Developer",
   role: "Linux Admin & Backend Developer",
   status: "Available for Internship & Part-Time",
   email: "bagasfattah15@gmail.com",

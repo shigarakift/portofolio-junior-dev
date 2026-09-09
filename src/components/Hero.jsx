@@ -2,72 +2,103 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Terminal as TerminalIcon, ArrowUpRight } from "lucide-react";
-import HeroSysWidget from "@/components/HeroSysWidget";
+import { ArrowUpRight, ChevronRight, Mail } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalData } from "@/data/portfolio";
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-[65vh] sm:min-h-[72vh] flex flex-col justify-center">
-      <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        {/* Left Content Column */}
-        <motion.div
-          className="lg:col-span-7 space-y-6 min-w-0"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {/* Availability Beacon Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0066FF]/10 border border-[#0066FF]/25 text-[#0066FF] text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-[#0066FF] animate-pulse shrink-0"></span>
-            <span className="font-medium truncate">{personalData.status}</span>
-          </div>
+    <section id="hero" className="pt-10 sm:pt-16 pb-12 sm:pb-20">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="space-y-8 max-w-4xl"
+      >
+        {/* Availability Beacon */}
+        <div className="inline-flex items-center gap-2 text-xs text-slate-300 font-sans">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span className="text-slate-400">{personalData.status}</span>
+        </div>
 
-          {/* Headline */}
-          <div className="space-y-2.5">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-              {personalData.name}
-            </h1>
-            <p className="text-base sm:text-xl font-mono text-[#0066FF] font-medium flex items-center gap-2">
-              <TerminalIcon size={19} className="shrink-0 text-[#0066FF]" />
-              <span>{personalData.title}</span>
-            </p>
-          </div>
-
-          {/* Bio Summary */}
-          <p className="text-sm sm:text-base lg:text-lg text-slate-400 leading-relaxed max-w-xl font-sans">
-            {personalData.bio}
+        {/* Primary Heading */}
+        <div className="space-y-3">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+            {personalData.name}
+          </h1>
+          <p className="text-xl sm:text-2xl text-[#3b82f6] font-medium tracking-tight">
+            {personalData.title}
           </p>
+        </div>
 
-          {/* Action Buttons */}
-          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 text-xs sm:text-sm font-medium">
+        {/* Editorial Bio */}
+        <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans max-w-2xl">
+          {personalData.bio}
+        </p>
+
+        {/* Action & Social Links Row */}
+        <div className="flex flex-wrap items-center gap-4 pt-2 text-sm font-medium">
+          <a
+            href="#projects"
+            className="px-5 py-2.5 rounded-lg bg-white text-[#0a0c10] hover:bg-slate-200 transition-colors duration-150 flex items-center gap-1.5 font-semibold text-xs sm:text-sm"
+          >
+            <span>View Projects</span>
+            <ChevronRight size={16} />
+          </a>
+
+          <a
+            href={`mailto:${personalData.email}`}
+            className="px-5 py-2.5 rounded-lg border border-white/[0.1] hover:border-white/[0.2] bg-white/[0.03] text-white transition-colors duration-150 flex items-center gap-1.5 text-xs sm:text-sm"
+          >
+            <span>Contact Directly</span>
+            <ArrowUpRight size={15} className="text-slate-400" />
+          </a>
+
+          <div className="flex items-center gap-3 pl-2 sm:pl-4 border-l border-white/[0.1] text-slate-400">
             <a
-              href="#projects"
-              className="px-6 py-3.5 rounded-xl bg-[#0066FF] text-white hover:bg-[#0052CC] transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-[#0066FF]/25 font-semibold text-center shrink-0"
+              href={personalData.github}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors"
+              title="GitHub"
             >
-              <span>View Projects</span>
-              <ChevronRight size={18} />
+              <FaGithub size={18} />
             </a>
             <a
-              href="#contact"
-              className="px-6 py-3.5 rounded-xl border border-white/[0.1] bg-[#0d1320]/90 text-slate-300 hover:text-white hover:border-[#0066FF]/50 hover:bg-[#121b2e] transition-all duration-200 flex items-center justify-center gap-2 text-center shrink-0"
+              href={personalData.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors"
+              title="LinkedIn"
             >
-              <span>Contact Me</span>
-              <ArrowUpRight size={16} />
+              <FaLinkedin size={18} />
             </a>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right Telemetry Node Widget */}
-        <motion.div
-          className="lg:col-span-5 w-full min-w-0"
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <HeroSysWidget />
-        </motion.div>
-      </div>
+        {/* Minimalist Specs Ledger Strip (Clean Row, Not a Chunky Box) */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-white/[0.08] text-xs">
+          <div>
+            <div className="text-slate-500 text-[11px] uppercase tracking-wider font-mono">Specialization</div>
+            <div className="text-slate-200 font-medium mt-1">Linux &amp; Backend</div>
+          </div>
+          <div>
+            <div className="text-slate-500 text-[11px] uppercase tracking-wider font-mono">Education</div>
+            <div className="text-slate-200 font-medium mt-1">SMKN 1 Cibinong (SIJA)</div>
+          </div>
+          <div>
+            <div className="text-slate-500 text-[11px] uppercase tracking-wider font-mono">Core Stack</div>
+            <div className="text-slate-200 font-medium mt-1">Docker, Go, Node, SQL</div>
+          </div>
+          <div>
+            <div className="text-slate-500 text-[11px] uppercase tracking-wider font-mono">Location</div>
+            <div className="text-slate-200 font-medium mt-1">{personalData.location}</div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

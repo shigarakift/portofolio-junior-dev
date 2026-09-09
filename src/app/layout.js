@@ -1,6 +1,5 @@
 import { JetBrains_Mono, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import CursorEffect from "@/components/CursorEffect";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -44,11 +43,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="id"
-      className={`${jetbrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} h-full bg-[#080c14] antialiased`}
+      className={`${jetbrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} h-full bg-[#0a0c10] antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#080c14] text-[#f8fafc] overflow-x-hidden font-sans selection:bg-[#0066FF]/30 selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#0a0c10] text-[#f1f5f9] overflow-x-hidden font-sans selection:bg-[#3b82f6]/25 selection:text-white">
         <SmoothScroll />
-        <CursorEffect />
         {children}
       </body>
     </html>

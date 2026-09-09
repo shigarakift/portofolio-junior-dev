@@ -27,7 +27,7 @@ export default function WibClock({ className = "", showIcon = true, showLabel = 
   if (!timeString) {
     return (
       <div className={`inline-flex items-center gap-1.5 font-mono text-xs text-slate-400 ${className}`}>
-        {showIcon && <Clock size={13} className="text-[#0066FF] animate-pulse" />}
+        {showIcon && <Clock size={13} className="text-[#3b82f6] animate-pulse" />}
         <span className="opacity-50">--:--:-- -- WIB</span>
       </div>
     );
@@ -35,7 +35,7 @@ export default function WibClock({ className = "", showIcon = true, showLabel = 
 
   return (
     <div className={`inline-flex items-center gap-1.5 font-mono ${className}`}>
-      {showIcon && <Clock size={13} className="text-[#0066FF] shrink-0" />}
+      {showIcon && <Clock size={13} className="text-[#3b82f6] shrink-0" />}
       <span className="text-white font-medium tracking-tight text-xs">{timeString}</span>
       {showLabel && <span className="text-slate-500 text-[10px] uppercase font-semibold tracking-wider">WIB</span>}
     </div>

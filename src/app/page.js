@@ -5,52 +5,36 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
-import Education from "@/components/Education";
 import Projects from "@/components/Projects";
+import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#080c14] bg-tech-pattern relative text-[#f8fafc] overflow-x-hidden selection:bg-[#0066FF]/30 selection:text-white">
-      {/* Hero Ambient Radial Layer */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[500px] hero-glow-layer pointer-events-none z-0"></div>
-      <div className="absolute top-72 right-0 w-[450px] h-[450px] secondary-glow-layer pointer-events-none z-0"></div>
+    <main className="min-h-screen bg-[#0a0c10] relative text-[#f1f5f9] overflow-x-hidden selection:bg-[#3b82f6]/25 selection:text-white">
+      {/* Subtle Ambient Radial Lighting */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[350px] bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.06),transparent_70%)] pointer-events-none z-0"></div>
 
       <Navbar />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-24 sm:pb-32 space-y-28 sm:space-y-36 relative z-10">
-        {/* 1. HERO SECTION */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-16 relative z-10">
+        {/* 1. HERO */}
         <Hero />
 
-        {/* Section Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
-
-        {/* 2. ABOUT SECTION */}
+        {/* 2. ABOUT & PHILOSOPHY */}
         <About />
 
-        {/* Section Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
-
-        {/* 3. CORE SKILLS SECTION */}
+        {/* 3. TECHNICAL CAPABILITIES */}
         <Skills />
 
-        {/* Section Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
-
-        {/* 4. EDUCATION SECTION */}
-        <Education />
-
-        {/* Section Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
-
-        {/* 5. FEATURED PROJECTS SECTION */}
+        {/* 4. FEATURED WORK */}
         <Projects />
 
-        {/* Section Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
+        {/* 5. ACADEMIC TRACK */}
+        <Education />
 
-        {/* 6. CONTACT SECTION */}
+        {/* 6. DIRECT CONTACT */}
         <Contact />
       </div>
 

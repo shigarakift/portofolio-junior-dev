@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Copy, Code2 } from 'lucide-react';
+import { Check, Copy, FileCode2 } from 'lucide-react';
 
 export default function TerminalWindow({ title, children, delay = 0, copyText = null, actionLabel = null, className = "" }) {
   const [copied, setCopied] = useState(false);
@@ -20,26 +20,21 @@ export default function TerminalWindow({ title, children, delay = 0, copyText = 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={`rounded-2xl border border-white/[0.08] bg-[#0d131f]/80 overflow-hidden shadow-2xl shadow-black/50 backdrop-blur-md ${className}`}
+      className={`rounded-2xl border border-white/[0.08] bg-[#0d131f] overflow-hidden shadow-2xl shadow-black/50 ${className}`}
     >
-      {/* Code Header Bar */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.07] bg-[#111827]/90 text-xs select-none">
-        <div className="flex items-center space-x-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#ef4444]/80"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-[#f59e0b]/80"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-[#10b981]/80"></div>
-        </div>
-
-        <div className="flex items-center gap-1.5 text-slate-400 font-mono text-[11px] truncate">
-          <Code2 size={13} className="text-[#0066FF] shrink-0" />
-          <span className="truncate">{title || 'sys-config.json'}</span>
+      {/* Code Header Bar - Minimalist Technical Spec Style */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.07] bg-[#111827] text-xs select-none">
+        <div className="flex items-center gap-2 text-slate-400 font-mono text-[11px] truncate">
+          <FileCode2 size={14} className="text-[#0066FF] shrink-0" />
+          <span className="text-white font-medium truncate">{title || 'system-dossier.conf'}</span>
+          <span className="text-[10px] text-slate-500 font-mono border border-white/[0.06] px-1.5 py-0.2 rounded hidden sm:inline">ro</span>
         </div>
 
         <div>
           {copyText && (
             <button
               onClick={handleCopy}
-              className="flex items-center gap-1.5 text-[10px] font-mono text-slate-400 hover:text-white transition-colors bg-white/[0.05] hover:bg-white/[0.1] px-2.5 py-1 rounded-lg border border-white/[0.08]"
+              className="flex items-center gap-1.5 text-[10px] font-mono text-slate-400 hover:text-white transition-colors bg-white/[0.04] hover:bg-white/[0.08] px-2.5 py-1 rounded-lg border border-white/[0.07]"
               title="Copy snippet"
             >
               {copied ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}

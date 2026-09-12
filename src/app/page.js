@@ -12,9 +12,12 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0c10] relative text-[#f1f5f9] overflow-x-hidden selection:bg-[#3b82f6]/25 selection:text-white">
-      {/* Subtle Ambient Radial Lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[350px] bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.06),transparent_70%)] pointer-events-none z-0"></div>
+    <main className="min-h-screen bg-[#f5f4f2] dark:bg-[#0e1117] relative text-[#0a0a0a] dark:text-[#f8fafc] overflow-x-hidden selection:bg-[#ff6b00]/20 selection:text-[#0a0a0a] transition-colors duration-200">
+      {/* Taste Skill Tactile Noise Texture */}
+      <div className="noise-overlay" aria-hidden="true" />
+
+      {/* Subtle Warm Ambient Radial Lighting (Taste Skill signature glow) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[450px] bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,107,0,0.07),transparent_65%)] dark:bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,107,0,0.08),transparent_65%)] pointer-events-none z-0" />
 
       <Navbar />
 

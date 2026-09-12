@@ -22,19 +22,19 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Bagas Alfattah R. — Linux Admin & Backend Developer",
+  title: "Bagas Alfattah R. / Linux Admin & Backend Developer",
   description: "Official portfolio of Bagas Alfattah R. (shigarakift) - SIJA SMKN 1 Cibinong student specializing in Linux Administration, Backend APIs, and Docker infrastructure.",
   keywords: ["shigarakift", "Bagas Alfattah R", "Linux Administration", "Backend Developer", "SMKN 1 Cibinong", "SIJA", "Docker", "Go", "Node.js"],
   authors: [{ name: "Bagas Alfattah R.", url: "https://github.com/shigarakift" }],
   openGraph: {
-    title: "Bagas Alfattah R. — Linux Admin & Backend Developer",
+    title: "Bagas Alfattah R. / Linux Admin & Backend Developer",
     description: "Linux Server Administration, Backend Architecture, and Containerized Infrastructure.",
     type: "website",
     locale: "id_ID",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bagas Alfattah R. — Linux Admin & Backend Developer",
+    title: "Bagas Alfattah R. / Linux Admin & Backend Developer",
     description: "SIJA student at SMKN 1 Cibinong specializing in Linux server administration, backend APIs, and Docker.",
   },
 };
@@ -43,9 +43,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="id"
-      className={`${jetbrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} h-full bg-[#0a0c10] antialiased`}
+      className={`${jetbrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} h-full bg-[#f5f4f2] antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#0a0c10] text-[#f1f5f9] overflow-x-hidden font-sans selection:bg-[#3b82f6]/25 selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#f5f4f2] text-[#0a0a0a] overflow-x-hidden font-sans selection:bg-[#ff6b00]/20 selection:text-[#0a0a0a]">
         <SmoothScroll />
         {children}
       </body>

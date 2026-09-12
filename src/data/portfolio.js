@@ -49,7 +49,7 @@ export const education = [
     id: 1,
     school: "SMKN 1 Cibinong",
     major: "Sistem Informatika, Jaringan, dan Aplikasi (SIJA)",
-    duration: "2023 — Present",
+    duration: "2023 to Present",
     status: "Active Student",
     description: "4-year vocational program specializing in Software Engineering, Network Infrastructure, and Systems Administration. Gaining practical hands-on experience in server management, backend APIs, and network protocols.",
     highlights: [

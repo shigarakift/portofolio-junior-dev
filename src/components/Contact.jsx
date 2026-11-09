@@ -1,9 +1,10 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { Mail, Check, Copy, ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalData } from "@/data/portfolio";
+import Reveal from "@/components/Reveal";
 
 export default function Contact() {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -16,17 +17,14 @@ export default function Contact() {
 
   return (
     <section id="contact" className="scroll-mt-24 py-14 sm:py-20 border-t border-neutral-200/80 dark:border-white/[0.08]">
-      <div className="space-y-7 max-w-3xl">
+      <Reveal className="space-y-7 max-w-3xl">
         <div className="space-y-3">
           <span className="text-xs font-mono text-[#d95700] dark:text-[#ff6b00] uppercase tracking-wider font-semibold">
             DIRECT CONTACT
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold text-neutral-950 dark:text-white tracking-tight leading-tight">
+          <h2 className="font-display text-3xl sm:text-5xl font-medium tracking-[-0.02em] text-neutral-950 dark:text-white leading-tight">
             Let&apos;s build reliable, production-ready systems.
           </h2>
-          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 font-sans leading-relaxed">
-            Whether you are looking for an intern with practical Linux server infrastructure skills or need a dedicated backend developer for your project, feel free to reach out directly.
-          </p>
         </div>
 
         {/* Direct Email & Action Bar */}
@@ -76,7 +74,7 @@ export default function Contact() {
             <ArrowUpRight size={13} className="text-neutral-400" />
           </a>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

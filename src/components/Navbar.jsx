@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { personalData } from '@/data/portfolio';
-import WibClock from '@/components/WibClock';
 import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Navbar() {
@@ -45,12 +44,8 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right Action & Clock & Theme Toggle */}
+          {/* Right Action & Theme Toggle */}
           <div className="flex items-center gap-2.5 sm:gap-3.5">
-            <div className="hidden sm:flex items-center text-xs text-neutral-500 font-mono">
-              <WibClock />
-            </div>
-
             {/* Dark Mode Toggle Icon */}
             <ThemeToggle />
 
@@ -98,10 +93,7 @@ export default function Navbar() {
             </div>
 
             <div className="pt-3 border-t border-neutral-200/70 dark:border-white/[0.06] flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <WibClock />
-                <ThemeToggle />
-              </div>
+              <ThemeToggle />
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}

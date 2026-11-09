@@ -1,4 +1,4 @@
-import { JetBrains_Mono, Inter, IBM_Plex_Mono } from "next/font/google";
+import { JetBrains_Mono, Inter, IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
@@ -11,6 +11,12 @@ const jetbrainsMono = JetBrains_Mono({
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
@@ -43,7 +49,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="id"
-      className={`${jetbrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} h-full bg-[#f5f4f2] antialiased`}
+      className={`${jetbrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} ${spaceGrotesk.variable} h-full bg-[#f5f4f2] antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#f5f4f2] text-[#0a0a0a] overflow-x-hidden font-sans selection:bg-[#ff6b00]/20 selection:text-[#0a0a0a]">
         <SmoothScroll />

@@ -10,8 +10,6 @@ export const personalData = {
   github: "https://github.com/shigarakift",
   linkedin: "https://www.linkedin.com/in/bagas-alfattah-r-162975320/",
   location: "Cibinong, Indonesia",
-  bio: "SIJA student at SMKN 1 Cibinong focused on Linux server administration, backend architecture, containerized environments, and system automation.",
-  about: "I build robust backend systems and configure high-reliability Linux server environments. With a strong foundation in network systems and application deployment, I specialize in building efficient APIs, managing containerized infrastructure with Docker, and scripting terminal utilities.",
   sysStats: {
     kernel: "Linux 6.8.0-custom",
     uptime: "99.98%",
@@ -25,21 +23,18 @@ export const skills = [
     name: "Linux Administration",
     category: "System & Infra",
     icon: Terminal,
-    description: "Server configuration, systemd services, SSH hardening, Bash scripting, and performance tuning.",
     tags: ["Ubuntu Server", "Debian", "Bash", "Systemd", "Nginx"]
   },
   {
     name: "Backend Development",
     category: "Software Engineering",
     icon: Server,
-    description: "Designing RESTful APIs, database schema management, authentication systems, and server-side logic.",
     tags: ["Node.js", "Go", "Laravel", "PostgreSQL", "REST API"]
   },
   {
     name: "Docker & Containerization",
     category: "DevOps & Deployment",
     icon: Cpu,
-    description: "Creating reproducible dev environments, multi-stage Dockerfiles, Docker Compose orchestrations.",
     tags: ["Docker", "Docker Compose", "Container Security", "CI/CD"]
   }
 ];
@@ -51,7 +46,6 @@ export const education = [
     major: "Sistem Informatika, Jaringan, dan Aplikasi (SIJA)",
     duration: "2023 to Present",
     status: "Active Student",
-    description: "4-year vocational program specializing in Software Engineering, Network Infrastructure, and Systems Administration. Gaining practical hands-on experience in server management, backend APIs, and network protocols.",
     highlights: [
       "Linux Server Configuration & Maintenance",
       "Network Protocols & Infrastructure",
@@ -78,7 +72,6 @@ export const projects = [
     title: "Secure REST API",
     tagline: "Production-Grade Backend Boilerplate",
     category: "Backend / Infrastructure",
-    description: "A hardened backend API starter featuring JWT authentication, role-based access control, PostgreSQL connection pooling, and structured error handling.",
     tech: ["Go / Node.js", "PostgreSQL", "Docker", "JWT"],
     github: "https://github.com/shigarakift",
     demo: "#",
@@ -90,7 +83,6 @@ export const projects = [
     title: "Hotel Ordering Platform",
     tagline: "Fullstack Food & Beverage Management",
     category: "Fullstack Web",
-    description: "A comprehensive web application for hotel guests to order food, beverages, and room services directly with real-time status updates.",
     tech: ["Laravel", "MySQL", "Tailwind CSS"],
     github: "https://github.com/shigarakift",
     demo: "#",

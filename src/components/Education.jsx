@@ -1,9 +1,10 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ChevronDown, GraduationCap } from "lucide-react";
 import { education } from "@/data/portfolio";
+import Reveal from "@/components/Reveal";
 
 export default function Education() {
   // Store expanded education cards.
@@ -18,21 +19,19 @@ export default function Education() {
   return (
     <section id="education" className="scroll-mt-24 py-10 sm:py-14 border-t border-neutral-200/80 dark:border-white/[0.08]">
       {/* Section Header */}
-      <div className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <Reveal className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <span className="text-xs font-mono text-[#d95700] dark:text-[#ff6b00] uppercase tracking-wider font-semibold">
             ACADEMIC TRACK
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-neutral-950 dark:text-white tracking-tight mt-1">
+          <h2 className="font-display text-2xl sm:text-3xl font-medium tracking-tight text-neutral-950 dark:text-white mt-1">
             Formal Education &amp; Training
           </h2>
         </div>
-        <p className="text-xs text-neutral-600 dark:text-neutral-400 font-sans max-w-sm">
-          Hands-on vocational curriculum focusing on computer systems, networking, and application engineering.
-        </p>
-      </div>
+      </Reveal>
 
       {/* Open Editorial Academic Timeline Row (No Bulky Box) */}
+      <Reveal>
       <div className="border-y border-neutral-200/80 dark:border-white/[0.08] divide-y divide-neutral-200/80 dark:divide-white/[0.08]">
         {education.map((item) => {
           const isExpanded = expandedEdu.includes(item.id);
@@ -116,21 +115,11 @@ export default function Education() {
                     transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="pt-6 mt-4 border-t border-neutral-200/70 dark:border-white/[0.06] grid grid-cols-1 lg:grid-cols-12 gap-8 text-neutral-700 dark:text-neutral-300 font-sans">
-                      <div className="lg:col-span-7 space-y-2">
-                        <div className="text-[11px] uppercase tracking-wider font-mono text-neutral-500 dark:text-neutral-400 font-semibold">
-                          Program Overview
-                        </div>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-sans">
-                          {item.description}
-                        </p>
+                    <div className="pt-6 mt-4 border-t border-neutral-200/70 dark:border-white/[0.06] text-neutral-700 dark:text-neutral-300 font-sans">
+                      <div className="text-[11px] uppercase tracking-wider font-mono text-neutral-500 dark:text-neutral-400 font-semibold mb-2.5">
+                        Curriculum &amp; Lab Focus
                       </div>
-
-                      <div className="lg:col-span-5 space-y-2.5">
-                        <div className="text-[11px] uppercase tracking-wider font-mono text-neutral-500 dark:text-neutral-400 font-semibold">
-                          Curriculum &amp; Lab Focus
-                        </div>
-                        <div className="space-y-2 text-xs text-neutral-700 dark:text-neutral-300">
+                      <div className="space-y-2 text-xs text-neutral-700 dark:text-neutral-300">
                           {item.highlights.map((hl, i) => (
                             <div key={i} className="flex items-start gap-2">
                               <Check size={14} className="text-[#ff6b00] shrink-0 mt-0.5" />
@@ -139,14 +128,14 @@ export default function Education() {
                           ))}
                         </div>
                       </div>
-                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-          );
+           );
         })}
       </div>
+      </Reveal>
     </section>
   );
 }

@@ -1,66 +1,74 @@
-# Portfolio Redesign Planning — Clean & Modern Theme
+# Portfolio Redesign Planning — Minimalis · Profesional · Modern
 
-**Tujuan:** Mengubah tema portofolio dari CLI/terminal aesthetic menjadi design yang lebih clean dan modern, sambil **mempertahankan semua konten (teks), color palette, dan design token warna** yang sudah ada.
+**Tujuan:** Tinggalkan tema terminal/CLI. UI minimalis profesional ala Linear/Vercel: whitespace lega, tipografi kuat, informasi padat, teks minimum.
 
-**Stack:** Next.js + Tailwind CSS  
-**Scope:** Layout, spacing, komponen, responsive design — **bukan** konten atau warna.
-
----
-
-## Fase 0 — Audit & Tokenisasi (sebelum sentuh kode)
-
-- Buka `tailwind.config.js`/`.ts` → catat semua custom color yang sudah didefinisikan (background dark, amber accent, dll) supaya nanti tinggal **reuse token yang sama**, bukan hardcode ulang.
-- List semua komponen section sebagai file terpisah kalau belum (`Hero.tsx`, `About.tsx`, `Skills.tsx`, `Education.tsx`, `Projects.tsx`, `Contact.tsx`) — kalau masih satu file besar `page.tsx`, ini jadi prasyarat biar redesign per-komponen bisa aman dan incremental.
-- Snapshot teks yang sudah ada (copy exact) supaya saat refactor JSX, tidak ada string yang berubah.
-
-**Checkpoint:** kalau struktur masih monolitik di satu file, kita split dulu — ini fase aman untuk berhenti kalau tiba-tiba ada panggilan interview.
+**Stack:** Next.js + Tailwind CSS
+**Scope:** Layout, komponen, dan pemangkasan copy. Data & warna accent tetap.
 
 ---
 
-## Fase 1 — Design System Layer (tanpa ubah warna)
+## Fase 0 — Content Audit (potong dulu, design kemudian)
 
-- Tambah/rapikan Tailwind theme extend untuk: `spacing scale`, `fontSize` hierarchy, `borderRadius`, `boxShadow` — token baru ini yang bikin "modern feel", warna existing tetap dipakai apa adanya.
-- Tentukan breakpoint strategy: `sm/md/lg/xl` dipakai konsisten di semua section (bukan cuma sebagian yang responsive kayak sekarang).
-- Putuskan approach komponen reusable: apakah pakai library util (`clsx`/`cva` untuk variant button/card) atau tetap manual class — supaya konsisten di semua section.
+- Audit semua string di `src/data/portfolio.js` → **KEEP (≤6 kata), SHORTEN, CUT**:
+  - `bio` + `about` → hapus, ganti metrics strip
+  - `description` skill → **hapus**, `tags` cukup
+  - `description` project → 3 highlights × 4–6 kata
+  - `description` education → hapus, pakai chips
+- Identifikasi komponen terminal yang harus dibongkar: `TerminalWindow.jsx`, `StatusBar.jsx`, `WibClock.jsx` → **hapus atau ganti** dengan komponen minimal.
+- Split section ke file per-komponen kalau masih monolitik.
+
+**Checkpoint:** tiap string lolos aturan "≤6 kata atau berganti visual".
 
 ---
 
-## Fase 2 — Redesign per Komponen (urutan prioritas visual impact)
+## Fase 1 — Design System Layer
 
-| Urutan | Komponen | Fokus perubahan |
-|---|---|---|
-| 1 | Navbar | Sticky + blur backdrop, hamburger mobile yang smooth (bukan cuma show/hide) |
-| 2 | Hero | Layout lebih lega, badge status jadi pill modern, CTA button di-restyle pakai token baru |
-| 3 | About + info.json card | Grid 2 kolom di desktop, stack di mobile, card border lebih soft |
-| 4 | Skills/Stack | Card grid dengan icon per skill, hover lift effect |
-| 5 | Education | Timeline vertikal dengan connector line, modern dot marker |
-| 6 | Projects | Card dengan hover scale/shadow, tech badge dirapikan jadi pill |
-| 7 | Contact/Footer | CTA section jadi centered clean card, social icon jadi icon-button bulat |
+- Tailwind extend: `spacing`, `fontSize`, `radius`, `shadow` — reuse token warna existing, jangan hardcode.
+- Inter sebagai font utama; JetBrains Mono **hanya** untuk angka metrik & kode.
+- Komponen kecil pengganti teks:
+  - `StatPill` — angka + label kecil uppercase
+  - `StatusDot` — dot hijau + 1 kata
+  - `Badge` — tech chip pill
+- Breakpoint konsisten `sm/md/lg/xl` semua section.
 
-Tiap komponen dikerjakan → kamu review di browser → lanjut komponen berikutnya. Ini match sama cara kerja kamu yang biasanya: satu bagian dulu, bukan sekaligus semua.
+---
+
+## Fase 2 — Redesign per Komponen (dengan text budget)
+
+| # | Komponen | Perubahan | Text budget |
+|---|---|---|---|
+| 1 | Navbar | Sticky + blur backdrop, hamburger smooth | Item nav: 1 kata |
+| 2 | Hero | H1 + 1 subjudul + status dot + 2 CTA | **≤3 baris** |
+| 3 | Metrics strip (baru) | 4 angka, label uppercase | 1–2 kata/angka |
+| 4 | Skills | Card grid: icon + nama + badges | Tanpa deskripsi |
+| 5 | Education | Timeline dot + chips | 1 baris |
+| 6 | Projects | Card grid, hover lift, badge pill | Judul + tagline + 3 highlights |
+| 7 | Contact | Centered card, icon-button bulat | Email + 2 icon |
+
+Tanpa: boot screen, fake CLI, log stream, process table, ASCII art.
+
+Tiap komponen → review browser → lanjut.
 
 ---
 
 ## Fase 3 — Responsive Hardening
 
-- Audit tiap komponen di 3 breakpoint (mobile/tablet/desktop) pakai Chrome DevTools
-- Pastikan elemen ASCII/terminal-style (jam WIB, `root@shigarakift:~$`, node status) tetap terbaca di layar kecil, bukan overflow atau kepotong
+- Audit 3 breakpoint via DevTools.
+- Grid projects 3 col → 1 col, metrics strip 4 → 2×2 di mobile.
 
 ---
 
 ## Fase 4 — QA & Deploy
 
-- Lighthouse check (performance + accessibility, terutama contrast amber-on-dark)
-- Test di Vercel preview branch dulu sebelum merge ke production
+- Lighthouse (performance + contrast accent-on-dark).
+- Vercel preview → merge.
 
 ---
 
-## Checkpoint & Safe Stopping Points
+## Checkpoint
 
-✓ **Setelah Fase 0:** File struktur sudah bersih, semua token documented  
-✓ **Setelah Fase 1:** Design system ready, baru eksekusi komponen  
-✓ **Setelah Fase 2.2 (Navbar + Hero):** Versi pertama sudah terlihat modern, bisa deploy preview  
-✓ **Setelah Fase 2.7:** Semua komponen selesai, tinggal polish  
-✓ **Setelah Fase 4:** Final review & production release
-
-Rencana ini bisa langsung dieksekusi kalau kamu mau mulai dari Fase 0 (audit token & cek struktur file).
+✓ Fase 0: data bebas paragraf, komponen terminal teridentifikasi
+✓ Fase 1: design system + StatPill/StatusDot/Badge siap
+✓ Fase 2.2: Hero + metrics terlihat — deploy preview bisa
+✓ Fase 2.7: semua komponen selesai
+✓ Fase 4: production

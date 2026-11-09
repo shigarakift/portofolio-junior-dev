@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,6 +6,7 @@ import { ArrowUpRight, ChevronDown, Check } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { projects } from "@/data/portfolio";
 import TechBadge from "@/components/TechBadge";
+import Reveal from "@/components/Reveal";
 
 export default function Projects() {
   // Store expanded project IDs. Initialize with project id 2 open as visual cue.
@@ -20,21 +21,19 @@ export default function Projects() {
   return (
     <section id="projects" className="scroll-mt-24 py-10 sm:py-14 border-t border-neutral-200/80 dark:border-white/[0.08]">
       {/* Section Header */}
-      <div className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <Reveal className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <span className="text-xs font-mono text-[#d95700] dark:text-[#ff6b00] uppercase tracking-wider font-semibold">
             FEATURED PROJECTS
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-neutral-950 dark:text-white tracking-tight mt-1">
+          <h2 className="font-display text-2xl sm:text-3xl font-medium tracking-tight text-neutral-950 dark:text-white mt-1">
             Production &amp; System Architectures
           </h2>
         </div>
-        <p className="text-xs text-neutral-600 dark:text-neutral-400 font-sans max-w-sm">
-          Click any project below to expand the architecture breakdown, system highlights, and repository code.
-        </p>
-      </div>
+      </Reveal>
 
       {/* Open Editorial Index Ledger (Hairline Dividers, No Floating Boxes) */}
+      <Reveal>
       <div className="divide-y divide-neutral-200/80 dark:divide-white/[0.08] border-y border-neutral-200/80 dark:border-white/[0.08]">
         {projects.map((project, idx) => {
           const isExpanded = expandedIds.includes(project.id);
@@ -124,31 +123,20 @@ export default function Projects() {
                     className="overflow-hidden"
                   >
                     <div className="pt-6 mt-4 border-t border-neutral-200/70 dark:border-white/[0.06] grid grid-cols-1 lg:grid-cols-12 gap-8 text-neutral-700 dark:text-neutral-300 font-sans">
-                      {/* Architecture narrative */}
-                      <div className="lg:col-span-7 space-y-3">
-                        <div className="text-[11px] uppercase tracking-wider font-mono text-neutral-500 dark:text-neutral-400 font-semibold">
-                          Architecture &amp; Implementation
+                      {/* Technical highlights */}
+                      <div className="lg:col-span-5 space-y-2.5">
+                        <div className="text-[11px] uppercase tracking-wider font-mono text-neutral-500 dark:text-neutral-400 font-semibold mb-2.5">
+                          Key Specifications
                         </div>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-sans">
-                          {project.description}
-                        </p>
+                        <div className="space-y-2 text-xs text-neutral-700 dark:text-neutral-300">
+                          {project.highlights.map((hl, i) => (
+                            <div key={i} className="flex items-start gap-2">
+                              <Check size={14} className="text-[#ff6b00] shrink-0 mt-0.5" />
+                              <span className="leading-snug">{hl}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-
-                      {/* Technical highlights & Action buttons */}
-                      <div className="lg:col-span-5 space-y-5">
-                        <div>
-                          <div className="text-[11px] uppercase tracking-wider font-mono text-neutral-500 dark:text-neutral-400 font-semibold mb-2.5">
-                            Key Specifications
-                          </div>
-                          <div className="space-y-2 text-xs text-neutral-700 dark:text-neutral-300">
-                            {project.highlights.map((hl, i) => (
-                              <div key={i} className="flex items-start gap-2">
-                                <Check size={14} className="text-[#ff6b00] shrink-0 mt-0.5" />
-                                <span className="leading-snug">{hl}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
 
                         {/* Action buttons */}
                         <div className="flex items-center gap-3 pt-1">
@@ -171,19 +159,19 @@ export default function Projects() {
                               className="px-4 py-2 rounded-xl bg-[#0a0a0a] dark:bg-white text-white dark:text-[#0a0c10] hover:bg-[#222] dark:hover:bg-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
                             >
                               <span>Live Application</span>
-                              <ArrowUpRight size={13} />
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+              <ArrowUpRight size={13} />
+            </a>
+          )}
+        </div>
+      </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
           );
         })}
-      </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
